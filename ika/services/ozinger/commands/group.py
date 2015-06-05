@@ -12,6 +12,7 @@ class Group(Command):
     aliases = (
         '닉네임추가',
         '닉추가',
+        'GROUP',
     )
     permission = Permission.LOGIN_REQUIRED
     description = (

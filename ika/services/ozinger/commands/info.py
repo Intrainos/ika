@@ -8,6 +8,7 @@ from ika.database import Account
 class Information(Command):
     name = '정보'
     aliases = (
+        'INFO',
     )
     syntax = '[계정명]'
     regex = r'(?P<name>\S+)?'
