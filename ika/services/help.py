@@ -8,6 +8,8 @@ class Help(Command):
     name = '도움말'
     aliases = (
         '도움',
+        'HELP',
+        '?',
     )
     syntax = '[명령어 이름]'
     regex = r'(?P<command>\S+)?'
