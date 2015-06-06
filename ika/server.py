@@ -86,6 +86,9 @@ class Server:
                         self.services[target].process_command(user, *params[1:])
                 elif command == 'OPERTYPE':
                     user.opertype = params[0]
+                elif command == 'IDLE':
+                    service = self.services[params[0]]
+                    self.writeuserline(service.uid, 'IDLE {} {} 0', uid, timeutils.unixtime())
                 elif command == 'NICK':
                     user.nick = params[0]
                 elif command == 'FHOST':
@@ -128,7 +131,7 @@ class Server:
                             names.insert(0, service.name)
                             for name in names:
                                 uid = '{}{}'.format(self.sid, ircutils.base36encode(idx))
-                                self.writeserverline('UID {uid} {timestamp} {nick} {host} {host} {ident} 0 {timestamp} + :{gecos}',
+                                self.writeserverline('UID {uid} {timestamp} {nick} {host} {host} {ident} 0 {timestamp} +Iiko :{gecos}',
                                     uid=uid,
                                     nick=name,
                                     ident=service.ident,
